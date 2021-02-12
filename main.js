@@ -15,27 +15,60 @@
 // - [x] await toevoegen in je async function
 // - [x] response -> checken met log, waar zit mijn data in?
 
+// opdracht 1
+
 const searchButton = document.getElementById('search-button');
 //console.log(searchButton)
 searchButton.addEventListener('click', searchCountries);
 
 async function searchCountries() {
-    const country = 'België';
-    //console.log(country)
-    const url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true;`;
-    //console.log(url)
-    const response = await axios.get(url)
-    //console.log('Waar zit mijn data in?', response.data[0])
+   try {
+       const country = 'Cuba';
+       //console.log(country)
+       const url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true;`;
+       //console.log(url)
+       const response = await axios.get(url);
+       const responseData = response.data[0];
+       console.log('Waar zit mijn data in?', response.data[0])
 
-    // opdracht 2
-    const countryInfo = `${response.data[0].name} is situated in ${response.data[0].subregion}. It has a population of ${response.data[0].population} people.`
-    console.log(countryInfo)
+       // opdracht 2
+       const countryInfo = `${responseData.name} is situated in ${responseData.subregion}. It has a population of ${responseData.population} people.`;
+       console.log(countryInfo);
 
-    // opdracht 3
-    const countryCity = `The capital is ${response.data[0].capital}`
-    console.log(countryCity)
+       // opdracht 3
+       const countryCity = `The capital is ${responseData.capital}`;
+       console.log(countryCity);
+
+       // opdracht 4
+       // returnen / loggen / aanroepen van functie currencies
+       countryCurrencies(responseData.currencies);
+
+
+   } catch (e) {
+       console.error(e)
+   }
 }
-// searchCountries();
+
+//searchCountries();
 
 
+// opdracht 4
+function countryCurrencies(currencies) {
+    let allCurrencies = '';
+
+    for (const currency of currencies) {
+        //console.log('Is dit valuta naam?', currency.name)
+        if (currencies.length === 1) {
+            const oneValuta = currency.name
+            allCurrencies += oneValuta
+            //console.log(`and you can pay with ${allCurrencies}'s`)
+        }
+        if (currencies.length === 2) {
+            const twoValuta = currency.name
+            allCurrencies += twoValuta;
+            console.log(`and you can pay with ${allCurrencies}'s`)
+        }
+
+    }
+}
 
