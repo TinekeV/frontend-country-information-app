@@ -17,21 +17,24 @@
 
 // opdracht 1
 
+let country = '';
+
 const searchButton = document.getElementById('search-button');
-//console.log(searchButton)
 searchButton.addEventListener('click', searchCountries);
 
 const inputField = document.getElementById('search-field')
-inputField.addEventListener('keyup', function (event) {
-    // enter is 13
-    if (event.keyCode === 13) {
+inputField.addEventListener('keyup', getCountry)
+
+function getCountry(e) {
+    country = e.target.value;
+    if (e.keyCode === 13) {
         return searchCountries()
     }
-})
+}
 
 async function searchCountries() {
    try {
-       const country = 'België';
+       //const country = 'Belgie';
        //console.log(country)
        const url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true;`;
        //console.log(url)
