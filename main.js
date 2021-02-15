@@ -29,23 +29,53 @@ async function searchCountries() {
        //console.log(url)
        const response = await axios.get(url);
        const responseData = response.data[0];
-       console.log('Waar zit mijn data in?', response.data[0])
+       //console.log('Waar zit mijn data in?', response.data[0])
 
-       // opdracht 2
-       const countryInfo = `${responseData.name} is situated in ${responseData.subregion}. It has a population of ${responseData.population} people.`;
-       console.log(countryInfo);
-       //return countryInfo
-
-       // opdracht 3
-       const countryCity = `The capital is ${responseData.capital}`;
-       console.log(countryCity);
-      // return countryCity;
 
        // opdracht 4
-       console.log(countryCurrencies(responseData.currencies))
+       //console.log(countryCurrencies(responseData.currencies))
 
        // opdracht 6
        console.log(countryLanguages(responseData.languages))
+
+       //DOM - data weergeven op de webpagina
+       // Lokaliseer de container waar alle info in moet
+       const containerCountryInfo = document.getElementById('country-info');
+       console.log(containerCountryInfo);
+
+       // [IMAGE: flag]
+       const countryFlag = document.createElement('img');
+       console.log(countryFlag);
+       countryFlag.setAttribute('src', responseData.flag);
+       containerCountryInfo.appendChild(countryFlag);
+
+       // [country-name]
+       const countryName = document.createElement('h1');
+       console.log(countryName);
+       countryName.setAttribute('id', 'country-name');
+       countryName.textContent = responseData.name;
+       containerCountryInfo.appendChild(countryName);
+
+       // [country-naam] is situated in [subarea-name]. It has a population of [amount] people.
+       const countryInfo = document.createElement('p');
+       console.log(countryInfo);
+       countryInfo.setAttribute('id', 'country-info');
+       countryInfo.textContent = `${responseData.name} is situated in ${responseData.subregion}. It has a population of ${responseData.population} people.`;
+       containerCountryInfo.appendChild(countryInfo);
+
+       // The capital is [city] and you can pay with [currency]'s
+       const countryCity = document.createElement('p');
+       console.log(countryCity);
+       countryCity.setAttribute('id', 'country-city');
+       countryCity.textContent = `The capital is ${responseData.capital} ` + countryCurrencies(responseData.currencies);
+       containerCountryInfo.appendChild(countryCity)
+
+       // They speak [language], [language] and [language]
+       const languagesPerCountry = document.createElement('p');
+       console.log(languagesPerCountry);
+       languagesPerCountry.setAttribute('id', 'country-languages');
+       languagesPerCountry.textContent = countryLanguages(responseData.languages);
+       containerCountryInfo.appendChild(languagesPerCountry);
 
    } catch (e) {
        console.error(e)
