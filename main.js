@@ -32,7 +32,31 @@ function getCountry(e) {
     }
 }
 
+// Lokaliseer de container waar alle info in moet
+const containerCountryInfo = document.getElementById('country-info');
+console.log(containerCountryInfo);
+
+
 async function searchCountries() {
+   // zoekveld leeg na invullen
+   inputField.value = "";
+
+   // // search new item + remove last searched item
+   // const lastSearchResult = document.getElementById('country')
+   // console.log(lastSearchResult)
+   //
+   // //  containerCountryInfo
+   // //  const searchResult = document.getElementById('country-info');
+   // //  console.log(searchResult)
+   // //  if (searchResult) {
+   // //      containerCountryInfo.removeChild(searchResult);
+   // //  }
+
+   // error message
+    const errorMessage = document.createElement('p')
+    containerCountryInfo.appendChild(errorMessage)
+
+
    try {
        //const country = 'Belgie';
        //console.log(country)
@@ -42,18 +66,7 @@ async function searchCountries() {
        const responseData = response.data[0];
        //console.log('Waar zit mijn data in?', response.data[0])
 
-
-       // opdracht 4
-       //console.log(countryCurrencies(responseData.currencies))
-
-       // opdracht 6
-       //console.log(countryLanguages(responseData.languages))
-
        //DOM - data weergeven op de webpagina
-       // Lokaliseer de container waar alle info in moet
-       const containerCountryInfo = document.getElementById('country-info');
-       console.log(containerCountryInfo);
-
        // [IMAGE: flag]
        const countryFlag = document.createElement('img');
        console.log(countryFlag);
@@ -71,7 +84,7 @@ async function searchCountries() {
        const countryInfo = document.createElement('p');
        console.log(countryInfo);
        countryInfo.setAttribute('id', 'country-info');
-       countryInfo.textContent = `${responseData.name} is situated in ${responseData.subregion}. It has a population of ${responseData.population} people.`;
+       countryInfo.textContent = `${responseData.name} is situated in ${responseData.subregion}. It has a population of ${responseData.population} people`;
        containerCountryInfo.appendChild(countryInfo);
 
        // The capital is [city] and you can pay with [currency]'s
@@ -90,6 +103,7 @@ async function searchCountries() {
 
    } catch (e) {
        console.error(e)
+       errorMessage.textContent = `${country} does not exist. Please try again!`
    }
 }
 
