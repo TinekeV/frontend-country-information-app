@@ -21,6 +21,14 @@ const searchButton = document.getElementById('search-button');
 //console.log(searchButton)
 searchButton.addEventListener('click', searchCountries);
 
+const inputField = document.getElementById('search-field')
+inputField.addEventListener('keyup', function (event) {
+    // enter is 13
+    if (event.keyCode === 13) {
+        return searchCountries()
+    }
+})
+
 async function searchCountries() {
    try {
        const country = 'België';
@@ -36,7 +44,7 @@ async function searchCountries() {
        //console.log(countryCurrencies(responseData.currencies))
 
        // opdracht 6
-       console.log(countryLanguages(responseData.languages))
+       //console.log(countryLanguages(responseData.languages))
 
        //DOM - data weergeven op de webpagina
        // Lokaliseer de container waar alle info in moet
