@@ -23,7 +23,7 @@ searchButton.addEventListener('click', searchCountries);
 
 async function searchCountries() {
    try {
-       const country = 'Cuba';
+       const country = 'België';
        //console.log(country)
        const url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true;`;
        //console.log(url)
@@ -34,15 +34,18 @@ async function searchCountries() {
        // opdracht 2
        const countryInfo = `${responseData.name} is situated in ${responseData.subregion}. It has a population of ${responseData.population} people.`;
        console.log(countryInfo);
+       //return countryInfo
 
        // opdracht 3
        const countryCity = `The capital is ${responseData.capital}`;
        console.log(countryCity);
+      // return countryCity;
 
        // opdracht 4
-       // returnen / loggen / aanroepen van functie currencies
-       countryCurrencies(responseData.currencies);
+       console.log(countryCurrencies(responseData.currencies))
 
+       // opdracht 6
+       console.log(countryLanguages(responseData.languages))
 
    } catch (e) {
        console.error(e)
@@ -54,21 +57,36 @@ async function searchCountries() {
 
 // opdracht 4
 function countryCurrencies(currencies) {
-    let allCurrencies = '';
+    let allCurrencies = 'and you can pay with ';
+    //console.log('Wat komt hier uit?', currencies.length)
+    //console.log('één currency geselecteerd?', currencies[0].name)
 
-    for (const currency of currencies) {
-        //console.log('Is dit valuta naam?', currency.name)
-        if (currencies.length === 1) {
-            const oneValuta = currency.name
-            allCurrencies += oneValuta
-            //console.log(`and you can pay with ${allCurrencies}'s`)
-        }
-        if (currencies.length === 2) {
-            const twoValuta = currency.name
-            allCurrencies += twoValuta;
-            console.log(`and you can pay with ${allCurrencies}'s`)
-        }
-
+    if (currencies.length === 2) {
+        return allCurrencies + `${currencies[0].name}'s and ${currencies[1].name}'s`
+        //console.log(allCurrencies + `${currencies[0].name}'s and ${currencies[1].name}'s`)
+    } else {
+        return allCurrencies + `${currencies[0].name}`
+        //console.log(allCurrencies + `${currencies[0].name}`)
     }
 }
 
+// opdracht 6
+function countryLanguages(languages) {
+    let allLanguages = 'They speak ';
+
+    for (let i = 0; i < languages.length; i++) {
+        //console.log('Wat is?', i, languages.length) // in dit geval 3 talen
+        if (languages.length === 1) {
+            return allLanguages = allLanguages + languages[i].name;
+        }
+        if (i === languages.length - 1) {
+            return allLanguages = allLanguages + ` and ${languages[i].name}`;
+        }
+        if (languages === 2 || i === languages.length - 2) {
+            allLanguages = allLanguages + languages[i].name;
+        } else {
+            allLanguages = allLanguages + `${languages[i].name}, `;
+        }
+    }
+    return allLanguages;
+}
