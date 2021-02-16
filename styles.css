@@ -1,3 +1,44 @@
 body {
     background-color: #ffffff;
+    font-family: 'Comfortaa', cursive;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Indie Flower', cursive;
+    font-size: 40px;
+}
+
+#globe-image {
+    width: 200px;
+    padding: 30px;
+}
+
+#search-field {
+    font-size: 15px;
+}
+
+#search-button {
+    background-color: hsl(197, 100%, 76%);
+    font-size: 15px;
+}
+
+#country-container {
+    width: 500px;
+    margin: 20px;
+    padding: 20px;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+#country-flag {
+    width: 100px;
+    padding-right: 30px;
 }

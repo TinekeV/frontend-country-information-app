@@ -33,73 +33,82 @@ function getCountry(e) {
 }
 
 // Lokaliseer de container waar alle info in moet
-const containerCountryInfo = document.getElementById('country-info');
-console.log(containerCountryInfo);
+const countryInformation = document.getElementById('country');
+console.log(countryInformation);
+
+
+// // search new item + remove last searched item
+// const lastSearch = document.getElementById('country-info')
+// //console.log(lastSearch)
+// if (lastSearch.parentNode) {
+//     lastSearch.parentNode.removeChild(lastSearch)
+// }
 
 
 async function searchCountries() {
-   // zoekveld leeg na invullen
-   inputField.value = "";
-
-   // // search new item + remove last searched item
-   // const lastSearchResult = document.getElementById('country')
-   // console.log(lastSearchResult)
-   //
-   // //  containerCountryInfo
-   // //  const searchResult = document.getElementById('country-info');
-   // //  console.log(searchResult)
-   // //  if (searchResult) {
-   // //      containerCountryInfo.removeChild(searchResult);
-   // //  }
+    // zoekveld leeg na invullen
+    inputField.value = "";
 
    // error message
-    const errorMessage = document.createElement('p')
-    containerCountryInfo.appendChild(errorMessage)
+   // const errorMessage = document.createElement('p')
+   // errorMessage.setAttribute('id', 'error')
+   // console.log(errorMessage)
+   // containerCountryInfo.appendChild(errorMessage)
 
+   const lastSearch = document.getElementById('country-container')
+   if (lastSearch) {
+       countryInformation.removeChild(lastSearch)
+   }
 
    try {
        //const country = 'Belgie';
-       //console.log(country)
        const url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true;`;
-       //console.log(url)
        const response = await axios.get(url);
        const responseData = response.data[0];
        //console.log('Waar zit mijn data in?', response.data[0])
 
        //DOM - data weergeven op de webpagina
+       // Lokaliseer container waar alle informatie in komt
+       const containerCountryInfo = document.createElement('div');
+       containerCountryInfo.setAttribute('id', 'country-container')
+       console.log(containerCountryInfo);
+
        // [IMAGE: flag]
        const countryFlag = document.createElement('img');
-       console.log(countryFlag);
+       //console.log(countryFlag);
        countryFlag.setAttribute('src', responseData.flag);
+       countryFlag.setAttribute('id', 'country-flag')
        containerCountryInfo.appendChild(countryFlag);
 
        // [country-name]
        const countryName = document.createElement('h1');
-       console.log(countryName);
+       //console.log(countryName);
        countryName.setAttribute('id', 'country-name');
        countryName.textContent = responseData.name;
        containerCountryInfo.appendChild(countryName);
 
        // [country-naam] is situated in [subarea-name]. It has a population of [amount] people.
        const countryInfo = document.createElement('p');
-       console.log(countryInfo);
+       //console.log(countryInfo);
        countryInfo.setAttribute('id', 'country-info');
        countryInfo.textContent = `${responseData.name} is situated in ${responseData.subregion}. It has a population of ${responseData.population} people`;
        containerCountryInfo.appendChild(countryInfo);
 
        // The capital is [city] and you can pay with [currency]'s
        const countryCity = document.createElement('p');
-       console.log(countryCity);
+       //console.log(countryCity);
        countryCity.setAttribute('id', 'country-city');
        countryCity.textContent = `The capital is ${responseData.capital} ` + countryCurrencies(responseData.currencies);
        containerCountryInfo.appendChild(countryCity)
 
        // They speak [language], [language] and [language]
        const languagesPerCountry = document.createElement('p');
-       console.log(languagesPerCountry);
+       //console.log(languagesPerCountry);
        languagesPerCountry.setAttribute('id', 'country-languages');
        languagesPerCountry.textContent = countryLanguages(responseData.languages);
        containerCountryInfo.appendChild(languagesPerCountry);
+
+       countryInformation.appendChild(containerCountryInfo);
 
    } catch (e) {
        console.error(e)
@@ -108,6 +117,7 @@ async function searchCountries() {
 }
 
 //searchCountries();
+
 
 
 // opdracht 4
