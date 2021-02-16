@@ -49,12 +49,14 @@ async function searchCountries() {
     // zoekveld leeg na invullen
     inputField.value = "";
 
-   // error message
+   //error message
    // const errorMessage = document.createElement('p')
    // errorMessage.setAttribute('id', 'error')
-   // console.log(errorMessage)
-   // containerCountryInfo.appendChild(errorMessage)
+   // countryInformation.appendChild(errorMessage)
+   const removeErrorMessage = document.getElementById('error-message')
+   removeErrorMessage.textContent = "";
 
+   // zoekterm verdwijnt
    const lastSearch = document.getElementById('country-container')
    if (lastSearch) {
        countryInformation.removeChild(lastSearch)
@@ -112,6 +114,7 @@ async function searchCountries() {
 
    } catch (e) {
        console.error(e)
+       const errorMessage = document.getElementById('error-message')
        errorMessage.textContent = `${country} does not exist. Please try again!`
    }
 }
