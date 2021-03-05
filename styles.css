@@ -90,13 +90,12 @@ h1 {
 }
 
 .countryList-container {
-    background-color: #bebebe;
     width: 900px;
     height: 400px;
 }
 
 #countryList {
-    background-color: #5e996f;
+    background-color: #d4e3d7;
     list-style-type: none;
     padding: 20px;
 
@@ -109,12 +108,12 @@ h1 {
 }
 
 #nameOfCountry {
-    background-color: #be8585;
+    background-color: #f1ecec;
     padding: 5px;
 }
 
 #flag-image {
     width: 20px;
-    background-color: #bea785;
+    background-color: #dcf8af;
     padding: 5px;
 }
