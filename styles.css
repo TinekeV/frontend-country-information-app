@@ -86,5 +86,35 @@ h1 {
 /*CSS STYLES FOR SECOND PAGE - WORLD MAP*/
 
 #worldMap-image {
+    width: 800px;
+}
+
+.countryList-container {
+    background-color: #bebebe;
     width: 900px;
+    height: 400px;
+}
+
+#countryList {
+    background-color: #5e996f;
+    list-style-type: none;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+#nameOfCountry {
+    background-color: #be8585;
+    padding: 5px;
+}
+
+#flag-image {
+    width: 20px;
+    background-color: #bea785;
+    padding: 5px;
 }
