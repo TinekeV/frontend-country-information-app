@@ -1,3 +1,5 @@
+/*CSS STYLE FOR HOME PAGE AND ALL PAGES*/
+
 body {
     background-color: #ffffff;
     font-family: 'Comfortaa', cursive;
@@ -78,4 +80,11 @@ h1 {
 
 #error-message:empty {
     display: none;
+}
+
+
+/*CSS STYLES FOR SECOND PAGE - WORLD MAP*/
+
+#worldMap-image {
+    width: 900px;
 }
