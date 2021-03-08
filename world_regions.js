@@ -31,7 +31,7 @@ async function allCountries() {
         console.log('GESORTEERDE DATA?', data)
 
         data.map((country) => {
-            const { flag , name } = country
+            const { flag , name, population, region } = country
             // console.log(flag)
             // console.log(name)
             //console.log(region)
@@ -47,16 +47,29 @@ async function allCountries() {
             listItemTwo.setAttribute('id', 'nameOfCountry')
             listItemTwo.textContent = name
             list.appendChild(listItemTwo)
+            listItemTwo.addEventListener("click", showPopulation)
 
-            // const listItemThree = document.createElement('li')
-            // listItemThree.setAttribute('id', 'populationOfCountry')
-            // listItemThree.textContent = population
-            // list.appendChild(listItemThree)
+            const listItemThree = document.createElement('li')
+            listItemThree.setAttribute('id', 'populationOfCountry')
+            listItemThree.textContent = population
+            list.appendChild(listItemThree)
+
+
+            function showPopulation() {
+                //console.log('Hello?')
+                const text = document.getElementById('nameOfCountry')
+                const displayPopulation = listItemThree.style.display
+                if (displayPopulation === 'block') {
+                    listItemThree.style.display = 'none'
+                }
+                else {
+                    listItemThree.style.display = 'block'
+                }
+            }
 
         })
 
 
-        
 
     } catch (e) {
 
@@ -98,3 +111,4 @@ function countryNamesInColor(region) {
 }
 
 countryNamesInColor()
+

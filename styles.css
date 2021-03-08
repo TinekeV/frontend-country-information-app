@@ -26,7 +26,7 @@ h1 {
     font-weight: bold;
 }
 
-#search-button {
+#search-button, #link-button {
     background-color: hsl(197, 100%, 76%);
     font-size: 15px;
     padding: 6px;
@@ -99,12 +99,6 @@ h1 {
     list-style-type: none;
     padding: 20px;
 
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-
 }
 
 #nameOfCountry {
@@ -116,4 +110,8 @@ h1 {
     width: 20px;
     background-color: #dcf8af;
     padding: 5px;
+}
+
+#populationOfCountry {
+    display: none;
 }
