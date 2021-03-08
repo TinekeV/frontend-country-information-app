@@ -38,6 +38,10 @@ h1 {
 
 }
 
+#search-button:hover, #link-button:hover {
+    cursor: pointer;
+}
+
 #country-container {
     /*width: 500px;*/
     margin: 20px;
@@ -114,7 +118,7 @@ h1 {
     padding: 5px;
 }
 
-/*kleuren voor switch statement function  countryNameInColor*/
+/*colors for switch statement function  countryNameInColor*/
 .red {
     color: hsl(354, 59%, 56%);
 }
@@ -139,3 +143,6 @@ h1 {
     color: hsl(0, 0%, 0%);
 }
 
+.red:hover, .green:hover, .blue:hover, .yellow:hover, .purple:hover, .black:hover {
+    cursor: pointer;
+}
