@@ -39,24 +39,22 @@ async function allCountries() {
             const listItemOne = document.createElement('img')
             //console.log(listItemOne)
             listItemOne.setAttribute('src', flag);
-            listItemOne.setAttribute('id', 'flag-image')
+            listItemOne.setAttribute('class', 'flag-image')
             list.appendChild(listItemOne)
 
             const listItemTwo = document.createElement('li')
             //console.log(listItemTwo)
-            listItemTwo.setAttribute('id', 'nameOfCountry')
+            listItemTwo.setAttribute('class', countryNamesInColor(region))
             listItemTwo.textContent = name
             list.appendChild(listItemTwo)
             listItemTwo.addEventListener("click", showPopulation)
 
             const listItemThree = document.createElement('li')
             listItemThree.setAttribute('id', 'populationOfCountry')
-            listItemThree.textContent = population
+            listItemThree.textContent = `This country has a population of ${population} people.`
             list.appendChild(listItemThree)
 
-
             function showPopulation() {
-                //console.log('Hello?')
                 const text = document.getElementById('nameOfCountry')
                 const displayPopulation = listItemThree.style.display
                 if (displayPopulation === 'block') {
@@ -66,6 +64,7 @@ async function allCountries() {
                     listItemThree.style.display = 'block'
                 }
             }
+
 
         })
 
@@ -94,21 +93,22 @@ allCountries()
 
 
 function countryNamesInColor(region) {
+    console.log('Does it work?')
     switch (region) {
         case 'Africa':
-            return 'hsl(222, 47%, 55%)'
+            return 'red';
         case 'Americas':
-            return 'hsl(139, 43%, 59%)'
+            return 'green';
         case 'Asia':
-            return 'hsl(354, 59%, 56%)'
+            return 'red';
         case 'Europe':
-            return 'hsl(47, 100%, 60%)'
+            return 'yellow';
         case 'Oceania':
-            return 'hsl(288, 43%, 53%)'
+            return 'purple';
         default:
-            return 'hsl(0, 0%, 0%)'
+            return 'black';
     }
 }
 
-countryNamesInColor()
+//countryNamesInColor()
 
