@@ -89,57 +89,53 @@ h1 {
     width: 800px;
 }
 
-#countryList {
-    background-color: #dfe2df;
+#country-list {
+    width: 1200px;
     list-style-type: none;
     column-count: 3;
-
-    padding: 20px;
-    width: 1000px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 5px;
+    padding: 10px;
 
 }
 
 .flag-image {
     width: 25px;
     background-color: #dcf8af;
-    padding: 10px;
+    margin: 5px 10px 0 0;
+
 }
 
 #populationOfCountry {
     display: none;
-    background-color: #d6f89f;
-    padding: 10px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 /*kleuren voor switch statement function  countryNameInColor*/
 .red {
     color: hsl(354, 59%, 56%);
-    background-color: #d9d9d9;
-    padding: 10px;
 }
+
 .green {
     color: hsl(139, 43%, 59%);
-    background-color: #d9d9d9;
-    padding: 10px;
 }
+
 .blue {
     color: hsl(222, 47%, 55%);
-    background-color: #d9d9d9;
-    padding: 10px;
 }
+
 .yellow {
     color: hsl(47, 100%, 60%);
-    background-color: #d9d9d9;
-    padding: 10px;
 }
+
 .purple {
     color: hsl(288, 43%, 53%);
-    background-color: #d9d9d9;
-    padding: 10px;
 }
+
 .black {
     color: hsl(0, 0%, 0%);
-    background-color: #d9d9d9;
-    padding: 10px;
 }
 

@@ -14,45 +14,47 @@
 // [] en de populatie is zichtbaar, deze onzichtbaar wordt. Als hij onzichtbaar is en er wordt
 // [] op geklikt, moet hij zichtbaar worden.
 
-const list = document.getElementById('countryList')
-console.log(list)
+const listContainer = document.getElementById('country-list')
+//console.log(listContainer)
 
 async function allCountries() {
 
     try {
         const countries = await axios.get('https://restcountries.eu/rest/v2/all')
-        console.log('ALLE DATA:', countries)
+        //console.log('ALLE DATA:', countries)
 
         const { data } = countries
 
         data.sort((a, b) => {
             return a.population - b.population
         })
-        console.log('GESORTEERDE DATA?', data)
+        //console.log('GESORTEERDE DATA?', data)
 
         data.map((country) => {
             const { flag , name, population, region } = country
-            // console.log(flag)
-            // console.log(name)
-            //console.log(region)
+
+            // list element maken - waar alle informatie in opgeslagen wordt
+            const countryList = document.createElement('li')
+            listContainer.appendChild(countryList)
+            // console.log(countryList)
 
             const listItemOne = document.createElement('img')
             //console.log(listItemOne)
             listItemOne.setAttribute('src', flag);
             listItemOne.setAttribute('class', 'flag-image')
-            list.appendChild(listItemOne)
+            countryList.appendChild(listItemOne)
 
-            const listItemTwo = document.createElement('li')
+            const listItemTwo = document.createElement('span')
             //console.log(listItemTwo)
             listItemTwo.setAttribute('class', countryNamesInColor(region))
             listItemTwo.textContent = name
-            list.appendChild(listItemTwo)
+            countryList.appendChild(listItemTwo)
             listItemTwo.addEventListener("click", showPopulation)
 
-            const listItemThree = document.createElement('li')
+            const listItemThree = document.createElement('p')
             listItemThree.setAttribute('id', 'populationOfCountry')
-            listItemThree.textContent = `This country has a population of ${population} people.`
-            list.appendChild(listItemThree)
+            listItemThree.textContent = `population: ${population}`
+            countryList.appendChild(listItemThree)
 
             function showPopulation() {
                 const text = document.getElementById('nameOfCountry')
@@ -65,10 +67,7 @@ async function allCountries() {
                 }
             }
 
-
         })
-
-
 
     } catch (e) {
 
@@ -78,22 +77,8 @@ async function allCountries() {
 allCountries()
 
 
-// switch statement maken voor land-namen in kleur
-// we hebben de volgende cases
-// case 'Africa'  --> returnen naam van land veranderd van kleur = hsl(222, 47%, 55%)  (blauw)
-// case 'Americas' --> kleur = hsl(139, 43%, 59%) (groen)
-// case 'Asia' --> kleur = hsl(354, 59%, 56%) (rood)
-// case 'Europe' --> kleur = hsl(47, 100%, 60%) (geel)
-// case 'Oceania' --> kleur = hsl(288, 43%, 53%) (paars)
-// default als er een land is zonde region --> hsl(hsl(0, 0%, 0%)) (zwart)
-
-// een functie schrijven met daarin een switch statement
-// functie heeft een parameter
-// switch parameter is region
-
 
 function countryNamesInColor(region) {
-    console.log('Does it work?')
     switch (region) {
         case 'Africa':
             return 'red';
@@ -110,5 +95,4 @@ function countryNamesInColor(region) {
     }
 }
 
-//countryNamesInColor()
 
