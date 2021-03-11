@@ -53,7 +53,6 @@ async function allCountries() {
 
 allCountries()
 
-
 function countryNamesInColor(region) {
     switch (region) {
         case 'Africa':
