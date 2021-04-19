@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>search country info</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
+    <h1 id="titel">Search facts about your favorite country!</h1>
+    <img src="assets/earth-globe.svg" id="globe-image" alt="image of globe" />
+    <div class="search-container">
+        <input type="text" id="search-field"/>
+        <button id="search-button">search</button>
+        <button id="link-button" onclick="window.location='worldmap.html'">world regions</button>
+    </div>
+    <p id="error-message"></p>
+    <div id="country"></div>
 
+
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
